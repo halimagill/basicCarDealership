@@ -1,6 +1,8 @@
 ﻿using System.Drawing;
+using System.Net.Mime;
 using basicCarDealership_prep.data.Models;
 using basicCarDealership_prep.data.Repositories;
+using basicCarDealership_prep.Data.DTOs;
 using basicCarDealership_prep.Data.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,7 +22,8 @@ namespace basicCarDealership_prep.API.Controllers
 
         // GET: api/<VehicleController>
         [HttpGet("GetCars")]
-        public async Task<IEnumerable<VehicleSearchViewModel>> GetCars()
+        [Produces(MediaTypeNames.Application.Json)]
+        public async Task<IEnumerable<VehicleSearchResult>> GetCars()
         {
             var results = await _carRepository.FindVehicleByParams();
 
@@ -28,7 +31,8 @@ namespace basicCarDealership_prep.API.Controllers
         }
 
         [HttpPost("GetSelectedCars")]
-        public async Task<IEnumerable<VehicleSearchViewModel>> GetSelectedCars([FromBody] VehicleSelectionDto selection = null)
+        [Produces(MediaTypeNames.Application.Json)]
+        public async Task<IEnumerable<VehicleSearchResult>> GetSelectedCars([FromBody] VehicleSelectionDto selection = null)
         {
             var results = await _carRepository.FindVehicleByParams(selection);
 

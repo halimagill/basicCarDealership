@@ -11,7 +11,7 @@ namespace basicCarDealership_prep.Data.Models
 {
     public class VehicleSelectionDto
     {
-        public List<ColorDto>? Colors { get; set; }
+        public List<ColorDto>? Colors { get; set; } = null;
         public List<MakeDto>? Makes { get; set; } = null;
         public bool? HasSunroof { get; set; } = null;
         public bool? IsFourWheelDrive { get; set; } = null;
